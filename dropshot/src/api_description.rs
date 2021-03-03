@@ -439,6 +439,7 @@ impl<Context: ServerContext> ApiDescription<Context> {
                         ),
                         example: None,
                         examples: indexmap::IndexMap::new(),
+                        extensions: indexmap::IndexMap::new(),
                     };
                     match location {
                         ApiEndpointParameterLocation::Query => {
@@ -504,6 +505,7 @@ impl<Context: ServerContext> ApiDescription<Context> {
                         description: None,
                         content: content,
                         required: true,
+                        extensions: indexmap::IndexMap::new(),
                     }))
                 })
                 .next();
@@ -549,6 +551,7 @@ impl<Context: ServerContext> ApiDescription<Context> {
                     headers: indexmap::IndexMap::new(),
                     content: content,
                     links: indexmap::IndexMap::new(),
+                    extensions: indexmap::IndexMap::new(),
                 };
 
                 match &endpoint.response.success {
@@ -1076,6 +1079,7 @@ impl<'a, Context: ServerContext> OpenApiDefinition<'a, Context> {
             self.info.license = Some(openapiv3::License {
                 name: name.to_string(),
                 url: None,
+                extensions: indexmap::IndexMap::new(),
             })
         }
         self.info.license.as_mut().unwrap()
